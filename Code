@@ -1,0 +1,35 @@
+var FixedBox;
+var MovingBox;
+
+
+
+function setup() {
+  createCanvas(500, 500);
+  
+  FixedBox = createSprite(200,200,50,50);
+  MovingBox = createSprite(50, 50, 50, 50);
+  FixedBox.setCollider("circle", 0, 0, 50);
+  MovingBox.setCollider("circle", 0, 0, 50);
+}
+
+function draw() {
+  MovingBox.debug = true;
+  FixedBox.debug = true;
+  background(255);
+  MovingBox.x = World.mouseX;
+  MovingBox.y = World.mouseY;
+  drawSprites();
+  touch();
+}
+function touch(){
+  if (FixedBox.isTouching(MovingBox)){
+  MovingBox.shapeColor = color(53);
+  FixedBox.shapeColor = color(53);    
+} else{
+  MovingBox.shapeColor = color(rgb(177, 44, 5));
+  FixedBox.shapeColor = color(rgb(177, 44, 5));
+  }
+  
+  
+
+}
